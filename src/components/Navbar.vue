@@ -18,7 +18,8 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <router-link class="nav-link" to="/cart">Keranjang
-              <b-icon-bag></b-icon-bag><span class="badge badge-success ml-2">{{jumlah_pesanan.length}}</span>
+              <b-icon-bag></b-icon-bag><span
+                class="badge badge-success ml-2">{{updateCart ? updateCart.length : jumlah_pesanan.length}}</span>
             </router-link>
           </li>
         </ul>
@@ -36,6 +37,7 @@
         jumlah_pesanan: []
       }
     },
+    props: ['updateCart'],
     methods: {
       setJumlah(data) {
         this.jumlah_pesanan = data
