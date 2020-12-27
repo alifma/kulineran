@@ -26,17 +26,17 @@
                     <h2 class="mt-sm-4 mt-md-0"><strong>{{product.nama}}</strong></h2>
                     <hr>
                     <h4>Harga : <strong>Rp. {{product.harga}}</strong></h4>
-                    <form action="">
+                    <form v-on:submit.prevent>
                         <div class="form-group mt-4">
                             <label for="jumlah_pemesanan">Jumlah Pesanan</label>
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" v-model="pesan.jumlah_pemesanan">
                         </div>
                         <div class="form-group">
                             <label for="jumlah_pemesanan">Keterangan</label>
-                            <textarea class="form-control mb-4"
-                                placeholder="keterangan seperti : Pedas, Nasi setengah"></textarea>
-                            <button type="submit" class="btn btn-success">
-                                <b-icon-cart></b-icon-cart> Pesan
+                            <textarea class="form-control mb-4" placeholder="keterangan seperti : Pedas, Nasi setengah"
+                                v-model="pesan.keterangan"></textarea>
+                            <button type="submit" class="btn btn-success" @click="pemesanan">
+                                <b-icon-cart class="mr-2"></b-icon-cart> Pesan
                             </button>
                         </div>
                     </form>
@@ -56,12 +56,37 @@
         },
         data() {
             return {
-                product: {}
+                product: {},
+                pesan: {}
             }
         },
         methods: {
             setProduct(data) {
                 this.product = data
+            },
+            pemesanan() {
+                if (this.pesan.jumlah_pemesanan) {
+                    this.pesan.product = this.product
+                    axios.post("http://localhost:3000/keranjangs", this.pesan)
+                        .then(() => {
+                            this.$toast.success('Berhasil menambahkan ke keranjang', {
+                                type: 'success',
+                                position: 'top-right',
+                                duration: 3000,
+                                dismissable: true
+                            })
+                        })
+                        .catch((err) => {
+                            console.log("Gagal", err)
+                        })
+                } else {
+                    this.$toast.error('Jumlah barang wajib diisi', {
+                        type: 'error',
+                        position: 'top-right',
+                        duration: 3000,
+                        dismissable: true
+                    })
+                }
             }
         },
         mounted() {
