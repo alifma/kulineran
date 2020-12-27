@@ -9,9 +9,9 @@
                             <h2><strong>Delicious Food Menu,</strong>
                                 <br> in your gadget</h2>
                             <p>Ayo segera pilih dan pesan makanan favorit anda!</p>
-                            <button class="btn btn-lg btn-success">
+                            <router-link to="/foods" class="btn btn-lg btn-success">
                                 <b-icon-arrow-right></b-icon-arrow-right> Pesan
-                            </button>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -32,9 +32,9 @@
                             <h2><strong>Delicious Food Menu,</strong>
                                 <br> in your gadget</h2>
                             <p>Ayo segera pilih dan pesan makanan favorit anda!</p>
-                            <button class="btn btn-lg btn-success">
+                            <router-link to="/foods" class="btn btn-lg btn-success">
                                 <b-icon-arrow-right></b-icon-arrow-right> Pesan
-                            </button>
+                            </router-link>to="/foods"
                         </div>
                     </div>
                 </div>

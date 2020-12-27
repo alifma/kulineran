@@ -57,7 +57,6 @@
           // handle error
           console.log("Gagal : ", error)
         )
-
     }
   }
 </script>

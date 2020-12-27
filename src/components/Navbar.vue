@@ -15,10 +15,10 @@
             <router-link class="nav-link" to="/foods">Foods</router-link>
           </li>
         </ul>
-         <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <router-link class="nav-link" to="/">Keranjang
-            <b-icon-bag></b-icon-bag><span class="badge badge-success ml-2">0</span></router-link>
+              <b-icon-bag></b-icon-bag><span class="badge badge-success ml-2">0</span></router-link>
           </li>
         </ul>
       </div>
