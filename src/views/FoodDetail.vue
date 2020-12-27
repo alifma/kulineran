@@ -35,10 +35,10 @@
                             <label for="jumlah_pemesanan">Keterangan</label>
                             <textarea class="form-control mb-4" placeholder="keterangan seperti : Pedas, Nasi setengah"
                                 v-model="pesan.keterangan"></textarea>
-                            <button type="submit" class="btn btn-success" @click="pemesanan">
-                                <b-icon-cart class="mr-2"></b-icon-cart> Pesan
-                            </button>
                         </div>
+                        <button type="submit" class="btn btn-success" @click="pemesanan">
+                            <b-icon-cart class="mr-2"></b-icon-cart> Pesan
+                        </button>
                     </form>
                 </div>
             </div>

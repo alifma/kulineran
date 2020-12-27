@@ -64,6 +64,25 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Form Checkout -->
+            <div class="row justify-content-end">
+                <div class="col-md-4">
+                    <form v-on:submit.prevent>
+                        <div class="form-group mt-4">
+                            <label for="nama">Nama :</label>
+                            <input type="text" class="form-control" v-model="pesan.nama">
+                        </div>
+                        <div class="form-group mt-4">
+                            <label for="noMeja">Nomor Meja :</label>
+                            <input type="text" class="form-control" v-model="pesan.noMeja">
+                        </div>
+                        <button type="submit" class="btn float-right btn-success" @click="checkout">
+                            <b-icon-cart class="mr-2"></b-icon-cart> Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -79,7 +98,8 @@
         },
         data() {
             return {
-                cart: []
+                cart: [],
+                pesan: {}
             }
         },
         methods: {
@@ -111,6 +131,39 @@
                         // handle error
                         console.log("Gagal : ", error)
                     )
+            },
+            checkout() {
+                // console.log("Pesan ", this.pesan)
+                if (this.pesan.nama && this.pesan.noMeja) {
+                    this.pesan.cart = this.cart;
+
+                    axios.post("http://localhost:3000/pesanans", this.pesan)
+                        .then(() => {
+                            // Hapus keranjang
+                            this.cart.map((item) => {
+                                return axios.delete('http://localhost:3000/keranjangs/' + item.id)
+                            })
+                            this.$router.push({
+                                path: "/success"
+                            })
+                            this.$toast.success('Pemesanan Berhasil', {
+                                type: 'success',
+                                position: 'top-right',
+                                duration: 3000,
+                                dismissable: true
+                            })
+                        })
+                        .catch((err) => {
+                            console.log("Gagal", err)
+                        })
+                } else {
+                    this.$toast.error('Nama dan Nomor Meja tidak boleh kosong', {
+                        type: 'error',
+                        position: 'top-right',
+                        duration: 3000,
+                        dismissable: true
+                    })
+                }
             }
         },
         mounted() {
