@@ -34,7 +34,7 @@
                             <p>Ayo segera pilih dan pesan makanan favorit anda!</p>
                             <router-link to="/foods" class="btn btn-lg btn-success">
                                 <b-icon-arrow-right></b-icon-arrow-right> Pesan
-                            </router-link>to="/foods"
+                            </router-link>
                         </div>
                     </div>
                 </div>
