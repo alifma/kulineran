@@ -66,6 +66,9 @@
             },
             pemesanan() {
                 if (this.pesan.jumlah_pemesanan) {
+                    this.$router.push({
+                        path: "/cart"
+                    })
                     this.pesan.product = this.product
                     axios.post("http://localhost:3000/keranjangs", this.pesan)
                         .then(() => {
